@@ -12,14 +12,18 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Compiling Java program...'
-                sh 'javac Hello.java'
+                bat 'javac Hello.java'
+                bat 'java Hello'
+
             }
         }
 
         stage('Test') {
             steps {
                 echo 'Running Java program...'
-                sh 'java Hello'
+                bat 'javac Hello.java'
+                bat 'java Hello'
+
             }
         }
     }
