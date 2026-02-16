@@ -5,20 +5,31 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo 'Code checked from Git repository'
+                echo 'Checking out source code...'
             }
         }
 
         stage('Build') {
             steps {
-                echo 'Building project from Jenkinsfile'
+                echo 'Compiling Java program...'
+                sh 'javac Hello.java'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Testing project'
+                echo 'Running Java program...'
+                sh 'java Hello'
             }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build Successful!'
+        }
+        failure {
+            echo 'Build Failed!'
         }
     }
 }
